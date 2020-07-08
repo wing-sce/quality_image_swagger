@@ -39,12 +39,12 @@ definitions:
   Coverage:
     type: "object"
     required: 
-      - pole_tag
+      - pole_name
       - total_images
     properties:
-      pole_tag:
+      pole_name:
         type: "string"
-        description: "Pole tag taken from parsing the image name."
+        description: "Pole name taken from parsing the image name."
       total_images:
         type: "integer"
         description: "The number of images for the structure."
@@ -58,7 +58,7 @@ definitions:
         type: "array"
         items: 
           type: "string"
-        description: "Name of the images that are significantly lower than the rest of the images evaludated. Image is excluded from overall calculations."
+        description: "Name of the images that are significantly lower than the rest of the images evaluated. Image is excluded from overall calculations."
       error:
         type: string
         enum:
