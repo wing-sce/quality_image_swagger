@@ -1,0 +1,75 @@
+swagger: "2.0"
+info:
+  description: "Communication method to understand the JSON output produced by the Angle Model during sprint 4."
+  version: "1.0.0"
+  title: "Angle API"
+tags:
+- name: "angle"
+  description: "API supporting Angle analysis."
+paths:
+  /angle/coverage:
+    post:
+      tags:
+      - "angle"
+      summary: "API returns coverage data for a set of images."
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Coverage"
+definitions:
+  quadrants:
+    type: "object"
+    properties:
+      first_quad:
+        type: "array"
+        items: 
+          type: "string"
+      second_quad:
+        type: "array"
+        items: 
+          type: "string"
+      third_quad:
+        type: "array"
+        items: 
+          type: "string"
+      fourth_quad:
+        type: "array"
+        items: 
+          type: "string"
+  Coverage:
+    type: "object"
+    required: 
+      - pole_tag
+      - total_images
+    properties:
+      pole_tag:
+        type: "string"
+        description: "Pole tag taken from parsing the image name."
+      total_images:
+        type: "integer"
+        description: "The number of images for the structure."
+      total_angle:
+        type: "number"
+        description: "Total angles covered by the images out of 360 degrees. This exludes low altitude images if it applies."
+      mean_angle:
+        type: "number"
+        description: "The average angle of each image. This exludes low altitude images if it applies."
+      low_altitude_excluded:
+        type: "array"
+        items: 
+          type: "string"
+        description: "Name of the images that are significantly lower than the rest of the images evaludated. Image is exluded from overall calculations."
+      error:
+        type: string
+        enum:
+          - "At least one missing quadrant."
+      quadrants:
+        $ref: "#/definitions/quadrants"
+      top_view_image:
+        type: "string"
+        description: "Name of the image that is closest to the centroid as defined by the model."
+    xml:
+      name: "Order"
