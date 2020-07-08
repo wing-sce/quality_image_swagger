@@ -71,5 +71,3 @@ definitions:
       top_view_image:
         type: "string"
         description: "Name of the image that is closest to the centroid as defined by the model."
-    xml:
-      name: "Order"
