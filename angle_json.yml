@@ -50,15 +50,15 @@ definitions:
         description: "The number of images for the structure."
       total_angle:
         type: "number"
-        description: "Total angles covered by the images out of 360 degrees. This exludes low altitude images if it applies."
+        description: "Total angles covered by the images out of 360 degrees. This excludes low altitude images if it applies."
       mean_angle:
         type: "number"
-        description: "The average angle of each image. This exludes low altitude images if it applies."
+        description: "The average angle of each image. This excludes low altitude images if it applies."
       low_altitude_excluded:
         type: "array"
         items: 
           type: "string"
-        description: "Name of the images that are significantly lower than the rest of the images evaludated. Image is exluded from overall calculations."
+        description: "Name of the images that are significantly lower than the rest of the images evaludated. Image is excluded from overall calculations."
       error:
         type: string
         enum:
