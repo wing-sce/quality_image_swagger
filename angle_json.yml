@@ -2,10 +2,7 @@ swagger: "2.0"
 info:
   description: "Communication method to understand the JSON output produced by the Angle Model during sprint 4."
   version: "1.0.0"
-  title: "Angle API"
-tags:
-- name: "angle"
-  description: "API supporting Angle analysis."
+  title: "Angle JSON documentation"
 paths:
   /angle/coverage:
     post:
