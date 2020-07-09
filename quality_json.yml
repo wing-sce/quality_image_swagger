@@ -1,21 +1,33 @@
 swagger: "2.0"
 info:
-  description: "Communication method to understand the JSON output produced by the Angle Model during sprint 4."
+  description: "Communication method to understand the JSON output produced by the Angle Model and Blur models. <br /><br /> This is however not API documentation."
   version: "1.0.0"
-  title: "Angle JSON documentation"
+  title: "Angle and Blur JSON documentation"
 paths:
   /angle/coverage:
     post:
       tags:
       - "angle"
-      summary: "API returns coverage data for a set of images."
+      summary: "JSON documentation for angle response."
       produces:
       - "application/json"
       responses:
         "200":
           description: "successful operation"
           schema:
-            $ref: "#/definitions/Coverage"
+            $ref: "#/definitions/coverage"
+  /quality/blur:
+    post:
+      tags:
+      - "quality"
+      summary: "JSON documentation for blur response."
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/blur"
 definitions:
   quadrants:
     type: "object"
@@ -36,7 +48,7 @@ definitions:
         type: "array"
         items: 
           type: "string"
-  Coverage:
+  coverage:
     type: "object"
     required: 
       - pole_name
@@ -68,3 +80,35 @@ definitions:
       top_view_image:
         type: "string"
         description: "Name of the image that is closest to the centroid as defined by the model."
+  blur:
+    type: "object"
+    required: 
+      - pole_name
+      - total_images
+    properties:
+      pole_name:
+        type: "string"
+        description: "Pole name taken from parsing the image name."
+      total_images:
+        type: "integer"
+        description: "The number of images processed for the structure."
+      images:
+        $ref: "#/definitions/images"
+  images:
+    type: "object"
+    required: 
+      - image_name
+      - model_status
+    properties:
+      image_name:
+        type: string
+        description: "Name of the image."
+      model_status:
+        type: string
+        enum:
+          - "Successfully processed"
+          - "Unable to detect object."
+        description: "Status on if the model was able to run blur detection or not."
+      blur_percentage:
+        type: number
+        description: "The image is first cropped to the area of interest. The percent represented here is the percent blur on the cropped image."
