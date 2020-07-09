@@ -112,3 +112,7 @@ definitions:
       blur_percentage:
         type: number
         description: "The image is first cropped to the area of interest. The percent represented here is the percent blur on the cropped image."
+      cropped_output:
+        type: string
+        description: "The name (maybe location?) of the cropped image so we can validate if the blur_percentage number does not seem right."
+    
