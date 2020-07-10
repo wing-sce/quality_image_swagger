@@ -1,5 +1,4 @@
-# quality_image_swagger
+# DEPRECATED. MOVED HERE https://github.com/wing-sce/quality_image_json
 
-Document used for collaboration purposes. 
+https://wing-sce.github.io/quality_image_json/
 
-To quickly render, copy the file and paste it into https://editor.swagger.io/
